@@ -33,7 +33,7 @@ export default function Header() {
         {/* DISPLAY CURRENT PAGE TITLE DYNAMICALLY */}
         <h2 className="text-2xl font-bold text-brand-burgundy">{pageTitle}</h2>
         {/* DISPLAY TODAY'S DATE DYNAMICALLY */}
-        <p className="text-sm text-gray-500">{todayDateFormatted}</p>
+        <p className="text-sm text-brand-burgundy">{todayDateFormatted}</p>
       </div>
     </header>
   );

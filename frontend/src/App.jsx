@@ -7,6 +7,7 @@ import Header from './components/Header';
 // Pages
 import DashboardPage from './pages/Dashboard';
 import BookingsPage from './pages/Bookings';
+import CalendarPage from './pages/Calendar';
 
 const Layout = ({ children }) => {
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/bookings" element={<BookingsPage />} />
+          <Route path="/calendar" element={<CalendarPage />} />
           {/* Add other routes similarly as you build them */}
         </Routes>
       </Layout>

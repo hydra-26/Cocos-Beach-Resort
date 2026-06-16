@@ -1,5 +1,15 @@
 import React, { useMemo } from 'react';
-import { ArrowUpRight, ArrowDownRight, Check, Clock, LayoutDashboard, Receipt, DoorOpen, CalendarDays, Users, Calendar } from 'lucide-react';
+import { 
+  ArrowUpRight, 
+  ArrowDownRight, 
+  Check, 
+  Clock, 
+  UserCheck, 
+  DoorOpen, 
+  LogOut, 
+  CreditCard, 
+  Wallet 
+} from 'lucide-react';
 
 export default function Dashboard() {
   const roomsData = [
@@ -40,53 +50,123 @@ export default function Dashboard() {
     });
   }, []);
 
+  // Enhanced KPI dataset mapped with contextual icons, color states, and custom graph path trends
+  const kpis = [
+    { 
+      title: 'Checking In', 
+      val: '1', 
+      trend: '+20%', 
+      up: true, 
+      icon: UserCheck, 
+      color: 'text-emerald-600 bg-emerald-50 border-emerald-100',
+    },
+    { 
+      title: 'Ongoing Stays', 
+      val: '7', 
+      trend: '+8%', 
+      up: true, 
+      icon: DoorOpen, 
+      color: 'text-indigo-600 bg-indigo-50 border-indigo-100',
+    },
+    { 
+      title: 'Checking Out', 
+      val: '2', 
+      trend: '-5%', 
+      up: false, 
+      icon: LogOut, 
+      color: 'text-rose-600 bg-rose-50 border-rose-100',
+    },
+    { 
+      title: 'Pending Balance', 
+      val: '₱98,500', 
+      trend: '-12%', 
+      up: false, 
+      icon: CreditCard, 
+      color: 'text-amber-600 bg-amber-50 border-amber-100',
+    },
+    { 
+      title: 'Total Collected', 
+      val: '₱106,100', 
+      trend: '+18%', 
+      up: true, 
+      icon: Wallet, 
+      color: 'text-cyan-600 bg-cyan-50 border-cyan-100',
+    },
+  ];
+
   return (
     <div className="space-y-6">
-      {/* Top Banner - Custom Burgundy Gradient matched to Sidebar Theme */}
-      <div className="bg-gradient-to-r from-brand-burgundy via-[#8E223A] to-[#A32D47] rounded-2xl p-8 text-white flex justify-between items-center shadow-md relative overflow-hidden">
-        <div className="z-10">
-          {/* Dynamic real-time date injection */}
-          <p className="text-white/70 text-sm font-medium mb-1">{todayDateFormatted}</p>
-          <h2 className="text-3xl font-bold mb-1">Good morning, Ms. Sidney 👋</h2>
-          <p className="text-white/80 opacity-90">Here's what's happening at Cocos Beach Resort today.</p>
+      {/* Top Banner - Custom Burgundy Theme with Layered Vector Bubble UI */}
+      <div className="bg-[#7A1C31] rounded-2xl p-8 text-white flex justify-between items-center shadow-md relative overflow-hidden h-[180px]">
+        
+        {/* BACKGROUND BUBBLE/CIRCLE UI ELEMENTS */}
+        <div className="absolute right-[-40px] top-[-30px] w-[320px] h-[320px] rounded-full bg-white/[0.03] pointer-events-none" />
+        <div className="absolute right-[40px] bottom-[-90px] w-[260px] h-[260px] rounded-full bg-white/[0.04] pointer-events-none" />
+        <div className="absolute right-[180px] top-[20px] w-[110px] h-[110px] rounded-full bg-white/[0.02] pointer-events-none" />
+        <div className="absolute right-[240px] bottom-[10px] w-[70px] h-[70px] rounded-full bg-white/[0.03] pointer-events-none" />
+
+        {/* Banner Texts */}
+        <div className="z-10 select-none">
+          <p className="text-white/60 text-xs font-normal mb-1.5">{todayDateFormatted}</p>
+          <h2 className="text-3xl font-bold mb-1.5 tracking-tight flex items-center gap-2">
+            Good morning, Ms. Sidney <span className="animate-pulse">👋</span>
+          </h2>
+          <p className="text-white/70 text-sm font-normal">Here's what's happening at Cocos Beach Resort today.</p>
         </div>
 
-        {/* Occupancy Card Glassmorphism Element */}
-        <div className="bg-white/10 backdrop-blur-md p-5 rounded-xl border border-white/20 text-center min-w-[160px] z-10">
-          <p className="text-xs font-semibold tracking-wider uppercase text-white/70 mb-1">Occupancy</p>
-          <p className="text-4xl font-extrabold text-brand-light">50%</p>
-          <div className="w-full bg-brand-burgundy/40 h-1.5 rounded-full mt-2 overflow-hidden">
-            <div className="bg-orange-300 h-full w-1/2 rounded-full"></div>
+        {/* Occupancy Card - High Fidelity Glassmorphic UI */}
+        <div className="relative z-10 bg-white/[0.08] backdrop-blur-md px-6 py-5 rounded-2xl border border-white/10 text-center w-[180px] shadow-lg flex flex-col justify-between h-[132px]">
+          <div>
+            <p className="text-[10px] font-bold tracking-widest uppercase text-white/60 mb-1">Occupancy</p>
+            <p className="text-4xl font-extrabold text-white tracking-tight">50%</p>
           </div>
-          <p className="text-[11px] text-white/70 mt-1.5">8 of 16 rooms</p>
-        </div>
-
-        {/* Brand Faint Silhouette Element */}
-        <div className="absolute right-0 bottom-0 text-white/[0.04] pointer-events-none translate-x-10 translate-y-10">
-          <span className="text-[200px] select-none">🌴</span>
+          
+          <div className="space-y-2">
+            <div className="w-full bg-black/20 h-1.5 rounded-full overflow-hidden">
+              <div className="bg-[#F5A623] h-full w-1/2 rounded-full"></div>
+            </div>
+            <p className="text-[11px] text-white/60 font-medium">8 of 16 rooms</p>
+          </div>
         </div>
       </div>
 
-      {/* KPI Highlight Rows */}
+      {/* KPI Highlight Rows - IMPROVED HIGH FIDELITY CARD COMPONENT GRID */}
       <div className="grid grid-cols-5 gap-4">
-        {[
-          { title: 'Checking In', val: '1', trend: '+20%', up: true },
-          { title: 'Ongoing Stays', val: '7', trend: '+8%', up: true },
-          { title: 'Checking Out', val: '2', trend: '-5%', up: false },
-          { title: 'Pending Balance', val: '₱98,500', trend: '-12%', up: false },
-          { title: 'Total Collected', val: '₱106,100', trend: '+18%', up: true },
-        ].map((kpi, idx) => (
-          <div key={idx} className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between">
-            <div>
-              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">{kpi.title}</span>
-              <span className="text-2xl font-bold text-gray-800">{kpi.val}</span>
+        {kpis.map((kpi, idx) => {
+          const IconComponent = kpi.icon;
+          return (
+            <div key={idx} className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md hover:border-gray-200 transition-all duration-300">
+              
+              {/* Header section with Icon Frame */}
+              <div className="flex items-start justify-between">
+                <div className="space-y-1">
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">
+                    {kpi.title}
+                  </span>
+                  <span className="text-2xl font-extrabold text-gray-800 tracking-tight block">
+                    {kpi.val}
+                  </span>
+                </div>
+                
+                {/* Dynamic context badge icon wrap */}
+                <div className={`p-2.5 rounded-xl border ${kpi.color} shadow-sm group-hover:scale-105 transition-transform duration-300`}>
+                  <IconComponent size={18} strokeWidth={2.2} />
+                </div>
+              </div>
+
+              {/* Footer row displaying sparkline graph layout and numeric percentage offsets */}
+              <div className="flex items-center justify-between mt-5 pt-2 border-t border-gray-50">
+                
+                {/* Trend values styling */}
+                <div className={`text-xs font-bold flex items-center gap-0.5 ${kpi.up ? 'text-emerald-600' : 'text-rose-500'}`}>
+                  {kpi.up ? <ArrowUpRight size={14} strokeWidth={2.5} /> : <ArrowDownRight size={14} strokeWidth={2.5} />}
+                  {kpi.trend}
+                </div>
+              </div>
+
             </div>
-            <div className={`text-xs font-semibold mt-3 flex items-center gap-1 ${kpi.up ? 'text-green-600' : 'text-red-500'}`}>
-              {kpi.up ? <ArrowUpRight size={14} /> : <ArrowDownRight size={14} />}
-              {kpi.trend} <span className="text-gray-400 font-normal">vs last month</span>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Main Multi-Column Panel split */}
@@ -172,8 +252,7 @@ export default function Dashboard() {
             {activities.map((act, i) => (
               <div key={i} className="flex items-center justify-between p-2.5 rounded-lg hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100">
                 <div className="flex items-center gap-3">
-                  {/* Avatars updated to warm brand background tints instead of cool blue */}
-                  <div className="w-9 h-9 rounded-full bg-brand-burgundy/5 text-brand-burgundy font-bold text-xs flex items-center justify-center border border-brand-burgundy/10">
+                  <div className="w-9 h-9 rounded-full bg-[#7A1C31]/5 text-[#7A1C31] font-bold text-xs flex items-center justify-center border border-[#7A1C31]/10">
                     {act.initial}
                   </div>
                   <div>
@@ -182,7 +261,7 @@ export default function Dashboard() {
                   </div>
                 </div>
                 <div>
-                  {act.type === 'in' && <span className="bg-brand-burgundy/5 text-brand-burgundy border border-brand-burgundy/20 px-2.5 py-0.5 rounded-full text-[11px] font-bold">Check In</span>}
+                  {act.type === 'in' && <span className="bg-[#7A1C31]/5 text-[#7A1C31] border border-[#7A1C31]/20 px-2.5 py-0.5 rounded-full text-[11px] font-bold">Check In</span>}
                   {act.type === 'out' && <span className="bg-gray-100 text-gray-600 px-2.5 py-0.5 rounded-full text-[11px] font-medium">Check Out</span>}
                   {act.type === 'stay' && <span className="text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded-full text-[11px] font-semibold">Staying</span>}
                 </div>

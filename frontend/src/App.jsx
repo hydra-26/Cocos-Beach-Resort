@@ -8,6 +8,9 @@ import Header from './components/Header';
 import DashboardPage from './pages/Dashboard';
 import BookingsPage from './pages/Bookings';
 import CalendarPage from './pages/Calendar';
+import RoomsPage from './pages/Rooms';
+import CustomersPage from './pages/Customers';
+import BillingsPage from './pages/Billings';
 
 const Layout = ({ children }) => {
   return (
@@ -31,7 +34,9 @@ export default function App() {
           <Route path="/" element={<DashboardPage />} />
           <Route path="/bookings" element={<BookingsPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
-          {/* Add other routes similarly as you build them */}
+          <Route path="/rooms" element={<RoomsPage />} />
+          <Route path="/customers" element={<CustomersPage />} />
+          <Route path="/billings" element={<BillingsPage />} />
         </Routes>
       </Layout>
     </Router>

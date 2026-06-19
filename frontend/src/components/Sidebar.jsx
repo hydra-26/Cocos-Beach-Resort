@@ -46,7 +46,7 @@ export default function Sidebar() {
           <SidebarItem to="/rooms" icon={DoorOpen} label="Rooms" />
           <SidebarItem to="/calendar" icon={CalendarDays} label="Calendar" />
           <SidebarItem to="/customers" icon={Users} label="Customers" />
-          <SidebarItem to="/billing" icon={Calendar} label="Billing" />
+          <SidebarItem to="/billings" icon={Calendar} label="Billing" />
         </div>
       </nav>
 
